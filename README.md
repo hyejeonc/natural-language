@@ -6,9 +6,9 @@ Inspired by <파이썬 라이브러리로 배우는 딥러닝 입문과 응용> 
 
 
 ## OpenCV 를 영상 처리 및 머신러닝
-
 -. https://fastcampus.co.kr/camp_programming_opencv
 
 
 
-
+## LLM 으로 논문 쓰기 
+-. https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202408221
