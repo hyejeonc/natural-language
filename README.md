@@ -15,6 +15,7 @@ Inspired by <파이썬 라이브러리로 배우는 딥러닝 입문과 응용> 
 
 
 ## SQL 이해, 데이터 사이언스의 시작은 쿼리부터! 
+-. https://sqlschool.co.kr/pagetutorial/
 -. https://danthetech.netlify.app/DataScience/how-to-build-a-data-science-portfolio
 
 
