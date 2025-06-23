@@ -13,7 +13,8 @@ https://docs.google.com/presentation/d/1xCAn0wMHTuiJ-7iDmwiTuazMhOmek7WHUeGD81qw
 
 ## LLM 으로 논문 쓰기 
 -. https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202408221
--. 
+-. https://www.sciencedirect.com/science/article/pii/S2542529324002360?via%3Dihub
+
 
 
 ## SQL 이해, 데이터 사이언스의 시작은 쿼리부터! 
