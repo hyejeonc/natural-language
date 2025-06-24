@@ -25,3 +25,4 @@ https://docs.google.com/presentation/d/1xCAn0wMHTuiJ-7iDmwiTuazMhOmek7WHUeGD81qw
 
 ## Natural language processing: Norwegian and Korean 
 -. 딥러닝을 이용한 자연어 처리 입문 https://wikidocs.net/21692
+-. 코퍼스 분석 및 엔그램 관련 블로그 https://velog.io/@kkulee/NLP-%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8-3-N-gram-%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8N-gram-Language-Model
