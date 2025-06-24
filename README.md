@@ -24,5 +24,4 @@ https://docs.google.com/presentation/d/1xCAn0wMHTuiJ-7iDmwiTuazMhOmek7WHUeGD81qw
 
 
 ## Natural language processing: Norwegian and Korean 
--.
--. 
+-. 딥러닝을 이용한 자연어 처리 입문 https://wikidocs.net/21692
