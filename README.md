@@ -26,3 +26,27 @@ https://docs.google.com/presentation/d/1xCAn0wMHTuiJ-7iDmwiTuazMhOmek7WHUeGD81qw
 ## Natural language processing: Norwegian and Korean 
 -. 딥러닝을 이용한 자연어 처리 입문 https://wikidocs.net/21692
 -. 코퍼스 분석 및 엔그램 관련 블로그 https://velog.io/@kkulee/NLP-%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8-3-N-gram-%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8N-gram-Language-Model
+
+
+## Bootcamp 
+-.https://www.reddit.com/r/LLMDevs/comments/1ieks86/free_resources_for_learning_llms/
+Introduction to LLMs from Andrej Karpathy (YouTube) - https://packt.link/KCdLN
+
+Generative AI for Beginners by Microsoft - https://packt.link/7Vq7f
+
+Generative AI with LLMs by Amazon Web Services (AWS) and DeepLearning.AI - https://packt.link/gVJWq
+
+NLP/LLM course by Hugging Face: https://packt.link/MZ67P
+
+Full-stack LLM Bootcamp: https://packt.link/vtJLT
+
+LLM University course by Cohere: https://packt.link/hePph
+
+Introduction to LLMs by Shaw Talebi: https://packt.link/Uagom
+
+LLMOps with DeepLearning.AI: https://packt.link/XPySW
+
+LLM Course by Maxime Labonne - https://packt.link/1t4O3
+
+Hands-On LLMs by Paul Iusztin - https://packt.link/O3mHd
+
