@@ -1,3 +1,4 @@
+# https://colab.research.google.com/drive/1hVDbhHJqBqOF9E0jLtUJJJMHOBlTKkSC#scrollTo=K6C1MPtrgRYU
 # Use this if you have conda installed
 # !conda install -c pytorch pytorch
 

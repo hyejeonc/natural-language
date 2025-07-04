@@ -1,3 +1,4 @@
+# https://colab.research.google.com/drive/1cjld2XmrEYxQdFRWFM5uzSYUpTfrkO5f
 # Use this if you have conda installed
 # !conda install -c pytorch pytorch
 
@@ -63,16 +64,18 @@ print(f"Min pixel value:{np.min(digit_0_array_og)} ; Max pixel value : {np.max(d
 Before proceeding autograd, will understand the basic terms:
 
 Forward Propagation:
-
 Computes the model's output by passing the input data through the network layers. It is often called Forward pass.
-Backward Propagation:
 
+
+Backward Propagation:
 Calculates the gradients of the loss with respect to the model's parameters using the chain rule, enabling parameter updates to minimize the loss.
+
 
 1.1. torch.autograd
 ##############################################
 '''
-# Create tensors with requires_grad=True
+# Create tensors with requires_grad=True 
+# 미분을 구할 변수 두개를 지정한다. 
 x = torch.tensor([2.0, 5.0], requires_grad=True)
 y = torch.tensor([3.0, 7.0], requires_grad=True)
 
@@ -90,6 +93,139 @@ print(f"Gradient of y: {y.grad}")
 print(f"Gradient of z: {z.grad}")
 print(f"Result of the operation: z = {z.detach()}")
 
+'''
+# 만약에 함수가 선형 함수가 아니면 어떻게 될까?  =>> 된다! 
+z = torch.sin(x) + torch.cos(y**2)
+z.retain_grad() #By default intermediate layer weight updation is not shown.
+
+# Compute the gradients
+z_sum = z.sum().backward()
 
 
+print(f"Gradient of x: {x.grad}") # Gradient of x: tensor([2.5839, 7.2837])
+print(f"Gradient of y: {y.grad}") # Gradient of y: tensor([ 5.5273, 32.3525])
+print(f"Gradient of z: {z.grad}") # Gradient of z: tensor([1., 1.])
+print(f"Result of the operation: z = {z.detach()}") # Result of the operation: z = tensor([-0.0018, -0.6583])
+'''
+
+
+#plt.show()
+'''
+##############################################
+1.2. Gradient Computation Graph
+A computation graph is a visual representation of the sequence of operations performed on tensors in a neural network, showing how each operation contributes to the final result. It is crucial for understanding and debugging the flow of data and gradients in deep learning models.
+
+torchviz is a tool used to visualize the computation graph of any PyTorch model.
+##############################################
+'''
+from torchviz import make_dot
+# Visualize the computation graph
+dot = make_dot(z, params={"x": x, "y": y, "z" : z})
+dot.render("grad_computation_graph", format="png")
+
+img = plt.imread("grad_computation_graph.png")
+plt.imshow(img)
+plt.axis('off')
+plt.show()
+
+
+'''
+##############################################
+1.3. Detaching Tensors from Computation Graph
+The detach() method is used to create a new tensor that shares storage with the original tensor but without tracking operations. When you call detach(), it returns a new tensor that does not require gradients. This is useful when you want to perform operations on a tensor without affecting the computation graph.
+##############################################
+# gradient descent 에서 이 아래로 loss 줄이는 방법에서 최소를 구하지 못하면 어떻게 되는가? 
+'''
+# Let's detach z from the computation graph
+print("Before detaching z from computation: ", z.requires_grad)
+z_det = z.detach() # 아까 설정한 z 의 텐서를 주어진 그래프에서 떼어낸다, 
+print("After detaching z from computation: ", z_det.requires_grad)
+
+'''
+##############################################
+1.4. Can Backpropagation be performed when requires_grad=False?
+When attempting to compute the gradients using z.backward(), a RuntimeError is raised because the tensors do not require gradients, and thus do not have a grad_fn.
+
+In this case, since requires_grad=False was used, the computation graph is essentially empty, as no gradients will be tracked.
+##############################################
+# gradient descent 에서 이 아래로 loss 줄이는 방법에서 최소를 구하지 못하면 어떻게 되는가? 
+'''
+x = torch.tensor(2.0, requires_grad=False)
+y = torch.tensor(3.0, requires_grad=False)
+
+
+# Perform simple operations
+z = x * y + y**2
+
+
+# Compute the gradients
+#z.backward()
+
+
+
+
+
+'''
+##############################################
+## Question 3 만약 미분가능하지 않은 함수라면?
+##############################################
+'''
+'''
+# Create tensors with requires_grad=True 
+# 미분을 구할 변수 두개를 지정한다. 
+x = torch.tensor([2.0, 5.0], requires_grad=True)
+y = torch.tensor([3.0, 7.0], requires_grad=True)
+
+# Perform some operations
+z = torch.nn.ReLU(x)
+
+z.retain_grad() #By default intermediate layer weight updation is not shown.
+
+# Compute the gradients
+z_sum = z.sum().backward()
+
+
+print(f"Gradient of x: {x.grad}")
+print(f"Gradient of y: {y.grad}")
+print(f"Gradient of z: {z.grad}")
+print(f"Result of the operation: z = {z.detach()}")
+
+# Autograd will apply masking for non-differentiable operations (like ReLU, and dropout) and propagate gradients for differentiable operations. 
+'''
+
+Y = torch.tensor([1.0,], requires_grad=True)
+print('torch.no_grad() == ', torch.no_grad())
+with torch.no_grad():
+	new_tensor = Y*2
+	print(new_tensor.requires_grad, Y.requires_grad)
+	
+	
+	
+'''
+##############################################
+## Question 4 만약 엘레멘트가 여러개인 텐서의 backward 를 구한다면?
+##############################################
+'''
+
+# Create tensors with requires_grad=True 
+# 미분을 구할 변수 두개를 지정한다. 
+x = torch.tensor([2.0, 5.0], requires_grad=True)
+y = torch.tensor([3.0, 7.0], requires_grad=True)
+
+# Perform some operations
+z = x + y 
+print(z.sum())
+
+z.retain_grad() #By default intermediate layer weight updation is not shown.
+
+# Compute the gradients
+z_sum = z.sum().backward()
+
+
+print(f"Gradient of x: {x.grad}")
+print(f"Gradient of y: {y.grad}")
+print(f"Gradient of z: {z.grad}")
+print(f"Result of the operation: z = {z.detach()}")
+
+# Autograd will apply masking for non-differentiable operations (like ReLU, and dropout) and propagate gradients for differentiable operations. 
 
